@@ -1,32 +1,401 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
 
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-  -->
-  <base href="/">
+  <base href="/webappmomo/">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="description" content="A webapp project.">
 
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="webappmomo">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
 
   <title>webappmomo</title>
   <link rel="manifest" href="manifest.json">
 </head>
+
 <body>
+  <style>
+    .center {
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -50%)
+    }
+
+    #loader {
+      animation: spin 1s linear infinite;
+      height: 10px;
+      width: 10px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -5px;
+    }
+
+    @keyframes spin {
+      0% {
+        box-shadow:
+          0px -30px #9C27B0,
+          10px -30px #9C27B0,
+          20px -20px #9C27B0,
+          30px -10px #9C27B0,
+          30px 0px #9C27B0,
+          30px 10px #9C27B0,
+          20px 20px #9C27B0,
+          10px 30px #9C27B0,
+          0px 30px transparent,
+          -10px 30px transparent,
+          -20px 20px transparent,
+          -30px 10px transparent,
+          -30px 0px transparent,
+          -30px -10px transparent,
+          -20px -20px transparent,
+          -10px -30px transparent;
+      }
+
+      6.25% {
+        box-shadow:
+          0px -30px transparent,
+          10px -30px #9C27B0,
+          20px -20px #9C27B0,
+          30px -10px #9C27B0,
+          30px 0px #9C27B0,
+          30px 10px #9C27B0,
+          20px 20px #9C27B0,
+          10px 30px #9C27B0,
+          0px 30px #9C27B0,
+          -10px 30px transparent,
+          -20px 20px transparent,
+          -30px 10px transparent,
+          -30px 0px transparent,
+          -30px -10px transparent,
+          -20px -20px transparent,
+          -10px -30px transparent;
+      }
+
+      12.5% {
+        box-shadow:
+          0px -30px transparent,
+          10px -30px transparent,
+          20px -20px #9C27B0,
+          30px -10px #9C27B0,
+          30px 0px #9C27B0,
+          30px 10px #9C27B0,
+          20px 20px #9C27B0,
+          10px 30px #9C27B0,
+          0px 30px #9C27B0,
+          -10px 30px #9C27B0,
+          -20px 20px transparent,
+          -30px 10px transparent,
+          -30px 0px transparent,
+          -30px -10px transparent,
+          -20px -20px transparent,
+          -10px -30px transparent;
+      }
+
+      18.75% {
+        box-shadow:
+          0px -30px transparent,
+          10px -30px transparent,
+          20px -20px transparent,
+          30px -10px #9C27B0,
+          30px 0px #9C27B0,
+          30px 10px #9C27B0,
+          20px 20px #9C27B0,
+          10px 30px #9C27B0,
+          0px 30px #9C27B0,
+          -10px 30px #9C27B0,
+          -20px 20px #9C27B0,
+          -30px 10px transparent,
+          -30px 0px transparent,
+          -30px -10px transparent,
+          -20px -20px transparent,
+          -10px -30px transparent;
+      }
+
+      25% {
+        box-shadow:
+          0px -30px transparent,
+          10px -30px transparent,
+          20px -20px transparent,
+          30px -10px transparent,
+          30px 0px #9C27B0,
+          30px 10px #9C27B0,
+          20px 20px #9C27B0,
+          10px 30px #9C27B0,
+          0px 30px #9C27B0,
+          -10px 30px #9C27B0,
+          -20px 20px #9C27B0,
+          -30px 10px #9C27B0,
+          -30px 0px transparent,
+          -30px -10px transparent,
+          -20px -20px transparent,
+          -10px -30px transparent;
+      }
+
+      31.25% {
+        box-shadow:
+          0px -30px transparent,
+          10px -30px transparent,
+          20px -20px transparent,
+          30px -10px transparent,
+          30px 0px transparent,
+          30px 10px #9C27B0,
+          20px 20px #9C27B0,
+          10px 30px #9C27B0,
+          0px 30px #9C27B0,
+          -10px 30px #9C27B0,
+          -20px 20px #9C27B0,
+          -30px 10px #9C27B0,
+          -30px 0px #9C27B0,
+          -30px -10px transparent,
+          -20px -20px transparent,
+          -10px -30px transparent;
+      }
+
+      37.5% {
+        box-shadow:
+          0px -30px transparent,
+          10px -30px transparent,
+          20px -20px transparent,
+          30px -10px transparent,
+          30px 0px transparent,
+          30px 10px transparent,
+          20px 20px #9C27B0,
+          10px 30px #9C27B0,
+          0px 30px #9C27B0,
+          -10px 30px #9C27B0,
+          -20px 20px #9C27B0,
+          -30px 10px #9C27B0,
+          -30px 0px #9C27B0,
+          -30px -10px #9C27B0,
+          -20px -20px transparent,
+          -10px -30px transparent;
+      }
+
+      43.75% {
+        box-shadow:
+          0px -30px transparent,
+          10px -30px transparent,
+          20px -20px transparent,
+          30px -10px transparent,
+          30px 0px transparent,
+          30px 10px transparent,
+          20px 20px transparent,
+          10px 30px #9C27B0,
+          0px 30px #9C27B0,
+          -10px 30px #9C27B0,
+          -20px 20px #9C27B0,
+          -30px 10px #9C27B0,
+          -30px 0px #9C27B0,
+          -30px -10px #9C27B0,
+          -20px -20px #9C27B0,
+          -10px -30px transparent;
+      }
+
+      50% {
+        box-shadow:
+          0px -30px transparent,
+          10px -30px transparent,
+          20px -20px transparent,
+          30px -10px transparent,
+          30px 0px transparent,
+          30px 10px transparent,
+          20px 20px transparent,
+          10px 30px transparent,
+          0px 30px #9C27B0,
+          -10px 30px #9C27B0,
+          -20px 20px #9C27B0,
+          -30px 10px #9C27B0,
+          -30px 0px #9C27B0,
+          -30px -10px #9C27B0,
+          -20px -20px #9C27B0,
+          -10px -30px #9C27B0;
+      }
+
+      56.25% {
+        box-shadow:
+          0px -30px #9C27B0,
+          10px -30px transparent,
+          20px -20px transparent,
+          30px -10px transparent,
+          30px 0px transparent,
+          30px 10px transparent,
+          20px 20px transparent,
+          10px 30px transparent,
+          0px 30px transparent,
+          -10px 30px #9C27B0,
+          -20px 20px #9C27B0,
+          -30px 10px #9C27B0,
+          -30px 0px #9C27B0,
+          -30px -10px #9C27B0,
+          -20px -20px #9C27B0,
+          -10px -30px #9C27B0;
+      }
+
+      62.5% {
+        box-shadow:
+          0px -30px #9C27B0,
+          10px -30px #9C27B0,
+          20px -20px transparent,
+          30px -10px transparent,
+          30px 0px transparent,
+          30px 10px transparent,
+          20px 20px transparent,
+          10px 30px transparent,
+          0px 30px transparent,
+          -10px 30px transparent,
+          -20px 20px #9C27B0,
+          -30px 10px #9C27B0,
+          -30px 0px #9C27B0,
+          -30px -10px #9C27B0,
+          -20px -20px #9C27B0,
+          -10px -30px #9C27B0;
+      }
+
+      68.75% {
+        box-shadow:
+          0px -30px #9C27B0,
+          10px -30px #9C27B0,
+          20px -20px #9C27B0,
+          30px -10px transparent,
+          30px 0px transparent,
+          30px 10px transparent,
+          20px 20px transparent,
+          10px 30px transparent,
+          0px 30px transparent,
+          -10px 30px transparent,
+          -20px 20px transparent,
+          -30px 10px #9C27B0,
+          -30px 0px #9C27B0,
+          -30px -10px #9C27B0,
+          -20px -20px #9C27B0,
+          -10px -30px #9C27B0;
+      }
+
+      75% {
+        box-shadow:
+          0px -30px #9C27B0,
+          10px -30px #9C27B0,
+          20px -20px #9C27B0,
+          30px -10px #9C27B0,
+          30px 0px transparent,
+          30px 10px transparent,
+          20px 20px transparent,
+          10px 30px transparent,
+          0px 30px transparent,
+          -10px 30px transparent,
+          -20px 20px transparent,
+          -30px 10px transparent,
+          -30px 0px #9C27B0,
+          -30px -10px #9C27B0,
+          -20px -20px #9C27B0,
+          -10px -30px #9C27B0;
+      }
+
+      81.25% {
+        box-shadow:
+          0px -30px #9C27B0,
+          10px -30px #9C27B0,
+          20px -20px #9C27B0,
+          30px -10px #9C27B0,
+          30px 0px #9C27B0,
+          30px 10px transparent,
+          20px 20px transparent,
+          10px 30px transparent,
+          0px 30px transparent,
+          -10px 30px transparent,
+          -20px 20px transparent,
+          -30px 10px transparent,
+          -30px 0px transparent,
+          -30px -10px #9C27B0,
+          -20px -20px #9C27B0,
+          -10px -30px #9C27B0;
+      }
+
+      87.5% {
+        box-shadow:
+          0px -30px #9C27B0,
+          10px -30px #9C27B0,
+          20px -20px #9C27B0,
+          30px -10px #9C27B0,
+          30px 0px #9C27B0,
+          30px 10px #9C27B0,
+          20px 20px transparent,
+          10px 30px transparent,
+          0px 30px transparent,
+          -10px 30px transparent,
+          -20px 20px transparent,
+          -30px 10px transparent,
+          -30px 0px transparent,
+          -30px -10px transparent,
+          -20px -20px #9C27B0,
+          -10px -30px #9C27B0;
+      }
+
+      93.75% {
+        box-shadow:
+          0px -30px #9C27B0,
+          10px -30px #9C27B0,
+          20px -20px #9C27B0,
+          30px -10px #9C27B0,
+          30px 0px #9C27B0,
+          30px 10px #9C27B0,
+          20px 20px #9C27B0,
+          10px 30px transparent,
+          0px 30px transparent,
+          -10px 30px transparent,
+          -20px 20px transparent,
+          -30px 10px transparent,
+          -30px 0px transparent,
+          -30px -10px transparent,
+          -20px -20px transparent,
+          -10px -30px #9C27B0;
+      }
+
+      100% {
+        box-shadow:
+          0px -30px #9C27B0,
+          10px -30px #9C27B0,
+          20px -20px #9C27B0,
+          30px -10px #9C27B0,
+          30px 0px #9C27B0,
+          30px 10px #9C27B0,
+          20px 20px #9C27B0,
+          10px 30px #9C27B0,
+          0px 30px transparent,
+          -10px 30px transparent,
+          -20px 20px transparent,
+          -30px 10px transparent,
+          -30px 0px transparent,
+          -30px -10px transparent,
+          -20px -20px transparent,
+          -10px -30px transparent;
+      }
+    }
+  </style>
+  <div class="center" id="spinner">
+    <div id='loader'></div>
+  </div>
+  <script>
+    function removeSpinner() { console.log('remove spinner'); document.getElementById('spinner').remove(); }
+    window.addEventListener('load', (event) => {
+      setTimeout(function () { removeSpinner(); }, 16000);
+    });
+  </script>
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
@@ -95,4 +464,5 @@
     }
   </script>
 </body>
+
 </html>
